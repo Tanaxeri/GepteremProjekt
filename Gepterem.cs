@@ -9,24 +9,52 @@ namespace GepteremProjekt
     internal class Gepterem
     {
 
-        int[,] ertekeles;
-        int helyDb;
-        int sorDb;
-        string nev;
+        readonly string nev;
+        readonly int sorDb;
+        readonly int helyDb;
+        readonly int[,] ertekeles;
 
-        public int[,] Ertekeles { get => ertekeles; set => ertekeles = value; }
-        public int HelyDb { get => helyDb; set => helyDb = value; }
-        public int SorDb { get => sorDb; set => sorDb = value; }
-        public string Nev { get => nev; set => nev = value; }
+        public string Nev => nev;
+        public int SorDb => sorDb;
+        public int HelyDb => helyDb;
+        public int[,] Ertekeles => ertekeles;
 
-        public Gepterem(int[,] ertekeles, int helyDb, int sorDb, string nev)
+        public Gepterem(string nev, int sorDb, int helyDb, int[,] ertekeles)
         {
-            this.ertekeles = ertekeles;
-            this.helyDb = helyDb;
-            this.sorDb = sorDb;
+
             this.nev = nev;
+            this.sorDb = sorDb;
+            this.helyDb = helyDb;
+            this.ertekeles = ertekeles;
+  
         }
 
+        public double Atlag()
+        {
+
+            double sum = 0;
+            int db = 0;
+            for (int i = 0; i < sorDb; i++)
+            {
+
+                for (int j = 0; j < helyDb; j++)
+                {
+
+                    if (ertekeles[i, j] > 0)
+                    {
+
+                        sum += ertekeles[i, j];
+                        db++;
+
+                    }
+
+                }
+
+            }
+
+            return sum / db;
+
+        }
 
     }
 }
